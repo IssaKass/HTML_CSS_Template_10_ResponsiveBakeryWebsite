@@ -10,6 +10,37 @@ const showMenu = (toggleId, navId) => {
   }
 };
 
+// ===== REMOVE MENU MOBILE ===== //
+const navLink = document.querySelectorAll(".nav-link");
+
+function linkAction() {
+  const navMenu = document.getElementById("navMenu");
+  navMenu.classList.remove("show-menu");
+}
+
+navLink.forEach((l) => l.addEventListener("click", linkAction));
+
+// ===== SCROLL SECTIONS ACTIVE LINK ===== //
+const sections = document.querySelectorAll("section[id]");
+
+function scrollActive() {
+  const scrollY = window.pageYOffset;
+
+  sections.forEach((current) => {
+    const sectionHeight = current.offsetHeight;
+    const sectionTop = current.offsetTop - 50;
+    const sectionId = current.getAttribute("id");
+
+    scrollY > sectionTop && scrollY <= sectionTop + sectionHeight
+      ? document
+          .querySelector(".nav-menu a[href*=" + sectionId + "]")
+          .classList.add("active-link")
+      : document
+          .querySelector(".nav-menu a[href*=" + sectionId + "]")
+          .classList.remove("active-link");
+  });
+}
+
 showMenu("menuToggle", "navMenu");
 
 // ===== DARK LIGHT THEME ===== //
@@ -35,27 +66,6 @@ function scrollHeader() {
 }
 
 window.addEventListener("scroll", scrollHeader);
-
-// ===== SCROLL SECTIONS ACTIVE LINK ===== //
-const sections = document.querySelectorAll("section[id]");
-
-function scrollActive() {
-  const scrollY = window.pageYOffset;
-
-  sections.forEach((current) => {
-    const sectionHeight = current.offsetHeight;
-    const sectionTop = current.offsetTop - 50;
-    const sectionId = current.getAttribute("id");
-
-    scrollY > sectionTop && scrollY <= sectionTop + sectionHeight
-      ? document
-          .querySelector(".nav-menu a[href*=" + sectionId + "]")
-          .classList.add("active-link")
-      : document
-          .querySelector(".nav-menu a[href*=" + sectionId + "]")
-          .classList.remove("active-link");
-  });
-}
 
 window.addEventListener("scroll", scrollActive);
 
