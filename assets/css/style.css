@@ -579,28 +579,16 @@ section {
 
 .menu .container {
   margin-top: var(--m-container);
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  align-items: center;
-  row-gap: 2.5rem;
-}
-
-.menu .menu-item {
-  flex-basis: 100%;
-}
-
-@media (min-width: 992px) {
-  .menu .menu-item {
-    flex-basis: calc(50% - 1rem);
-  }
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 2.5rem 1rem;
 }
 
 .menu .menu-content {
   display: flex;
   align-items: center;
   justify-content: space-evenly;
-  gap: 1rem;
+  row-gap: 1.5rem;
   padding: 1.5rem 0;
   background-color: var(--container-color);
   border-radius: var(--radius);
@@ -608,10 +596,9 @@ section {
   transition: var(--transition);
 }
 
-@media (max-width: 767px) {
+@media (min-width: 768px) {
   .menu .menu-content {
     flex-direction: column;
-    row-gap: 1.5rem;
     text-align: center;
   }
 }
@@ -621,17 +608,11 @@ section {
   box-shadow: var(--shadow-hover);
 }
 
-@media (min-width: 992px) {
-  .menu .menu-item:nth-child(3) .menu-img,
-  .menu .menu-item:nth-child(4) .menu-img {
-    order: 2;
-  }
-}
-
 .menu .menu-img {
-  min-width: 200px;
-  width: 300px;
-  height: 300px;
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  border: 0.3rem solid var(--first-color);
   position: relative;
   z-index: 1;
 }
@@ -642,28 +623,27 @@ section {
   width: 50px;
   height: 50px;
   border-radius: 50%;
-  border: 0.5rem solid var(--first-color);
+  border: 0.3rem solid var(--first-color);
   z-index: -1;
+}
+
+.menu .menu-item:nth-child(1) .menu-img::before,
+.menu .menu-item:nth-child(2) .menu-img::before {
+  left: -0.3rem;
+  top: -0.3rem;
 }
 
 .menu .menu-item:nth-child(3) .menu-img::before,
 .menu .menu-item:nth-child(4) .menu-img::before {
-  right: 0;
-  bottom: 0;
-}
-
-@media (min-width: 992px) {
-  .menu .menu-img {
-    width: 200px;
-    height: 200px;
-  }
+  right: -0.3rem;
+  bottom: -0.3rem;
 }
 
 .menu .menu-img img {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  border-radius: 50%;
+  border-radius: inherit;
 }
 
 .menu .menu-title {
@@ -671,7 +651,7 @@ section {
 }
 
 .menu .menu-description {
-  margin: 0.5rem 0 1rem;
+  margin: 0.1rem 0 0.5rem;
 }
 
 .menu .menu-price {
@@ -689,6 +669,8 @@ section {
   display: flex;
   flex-wrap: wrap;
   background-color: var(--container-color);
+  border-radius: var(--radius);
+  overflow: hidden;
 }
 
 .contact .contact-img {
