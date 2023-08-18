@@ -6,4 +6,9 @@ Responsive Bakery Website
 - Smooth scrolling in each section.
 - Compatible with all mobile devices and with a beautiful and pleasant user interface.
 
-![preview img](/preview.png)
+<br/>
+<a href="https://issakass.github.io/HTML_CSS_Template_10_ResponsiveBakeryWebsite/">↪ Live Preview</a>
+<br/>
+<br/>
+<img align="center" src="preview.png" alt="Preview Image" />
+<br/>
